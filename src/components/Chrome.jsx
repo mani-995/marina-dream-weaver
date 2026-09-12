@@ -13,13 +13,12 @@ export const STEPS = [
 
 export const Chrome = ({ step, goTo, dark, setDark, muted, setMuted }) => (
   <div className="pointer-events-none fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-8">
-    <div className="glass pointer-events-auto mx-auto flex max-w-[1200px] items-center gap-4 rounded-full px-4 py-2.5 sm:px-6">
-      <span
-        className="font-mono-e text-[11px] uppercase tracking-[0.3em]"
-        style={{ color: "var(--ink)" }}
-      >
-        Dipuuui<span style={{ color: "var(--rose)" }}> • 22</span>
-      </span>
+    <div className="glass pointer-events-auto mx-auto flex max-w-6xl items-center gap-3 rounded-full px-3 py-2 sm:px-4">
+      <div className="flex shrink-0 items-center gap-2">
+        <span className="grid size-8 place-items-center rounded-full bg-brand font-display text-lg italic text-paper">D</span>
+        <span className="font-display text-xl leading-none text-ink">Dipuuui</span>
+        <span className="hidden text-[9px] uppercase tracking-[0.18em] text-ink/45 sm:block">turning 22</span>
+      </div>
 
       <div className="mx-auto flex items-center gap-2" data-testid="step-progress">
         {STEPS.map((s, i) => (
@@ -29,18 +28,18 @@ export const Chrome = ({ step, goTo, dark, setDark, muted, setMuted }) => (
             disabled={i > step}
             title={s.label}
             data-testid={`step-dot-${s.id}`}
-            className="group relative grid h-6 w-6 place-items-center disabled:cursor-not-allowed"
+            className="group relative grid h-6 min-w-6 place-items-center disabled:cursor-not-allowed"
           >
             <span
               className="block rounded-full transition-all duration-500"
               style={{
-                width: i === step ? 22 : 7,
+                width: i === step ? 28 : 7,
                 height: 7,
                 background:
                   i === step
                     ? "var(--rose)"
                     : i < step
-                      ? "var(--lav)"
+                      ? "var(--sky)"
                       : "var(--glass-bd)",
                 opacity: i > step ? 0.6 : 1,
               }}
@@ -53,8 +52,7 @@ export const Chrome = ({ step, goTo, dark, setDark, muted, setMuted }) => (
         onClick={() => setMuted(!muted)}
         data-testid="chrome-audio-toggle"
         aria-label="Toggle ambient sound"
-        className="grid h-8 w-8 place-items-center rounded-full"
-        style={{ background: "var(--paper-2)", color: "var(--ink)" }}
+        className="grid size-8 shrink-0 place-items-center rounded-full bg-paper/70 text-ink ring-1 ring-ink/10"
       >
         {muted ? <VolumeX size={14} /> : <Volume2 size={14} />}
       </button>
@@ -62,8 +60,7 @@ export const Chrome = ({ step, goTo, dark, setDark, muted, setMuted }) => (
         onClick={() => setDark(!dark)}
         data-testid="chrome-theme-toggle"
         aria-label="Toggle theme"
-        className="grid h-8 w-8 place-items-center rounded-full"
-        style={{ background: "var(--paper-2)", color: "var(--ink)" }}
+        className="grid size-8 shrink-0 place-items-center rounded-full bg-paper/70 text-ink ring-1 ring-ink/10"
       >
         {dark ? <Sun size={14} /> : <Moon size={14} />}
       </button>
@@ -78,7 +75,7 @@ export const SceneFrame = ({ children, testid, className = "" }) => (
     animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
     exit={{ opacity: 0, y: -30, filter: "blur(10px)" }}
     transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-    className={`relative flex min-h-screen w-full flex-col items-center justify-center px-5 py-28 sm:px-10 ${className}`}
+    className={`relative flex min-h-screen w-full flex-col items-center justify-center px-5 pb-24 pt-32 sm:px-10 ${className}`}
   >
     {children}
   </motion.section>
@@ -104,13 +101,12 @@ export const NextButton = ({ onClick, label = "Next", testid }) => (
     whileHover={{ y: -3 }}
     onClick={onClick}
     data-testid={testid}
-    className="group relative mt-10 overflow-hidden rounded-full px-8 py-3.5 text-sm font-medium text-white"
-    style={{ background: "var(--rose)" }}
+    className="group relative mt-10 overflow-hidden rounded-full bg-ink px-8 py-3.5 text-sm font-medium text-paper ring-2 ring-ink/10"
   >
     <span className="relative z-10">{label}</span>
     <span
       className="absolute inset-0 translate-y-full transition-transform duration-500 group-hover:translate-y-0"
-      style={{ background: "var(--lav)" }}
+      className="absolute inset-0 translate-y-full bg-brand transition-transform duration-500 group-hover:translate-y-0"
     />
   </motion.button>
 );
