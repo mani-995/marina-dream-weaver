@@ -2,42 +2,42 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Flower } from "../components/Flower";
 import { SceneFrame, Eyebrow, NextButton } from "../components/Chrome";
+import memoryOne from "../assets/blooms/memory-1.jpg";
+import memoryTwo from "../assets/blooms/memory-2.jpg";
+import memoryThree from "../assets/blooms/memory-3.jpg";
+import memoryFour from "../assets/blooms/memory-4.jpg";
+import memoryFive from "../assets/blooms/memory-5.jpg";
 
 const GARDEN = [
   {
     id: 1,
     caption: "that laugh, again",
     palette: { p1: "#FF58C7", p2: "#FFFFFF", p3: "#77BEF8" },
-    photo:
-      "https://images.unsplash.com/photo-1578933301026-3e5e901126dc?crop=entropy&cs=srgb&fm=jpg&w=500&q=80",
+    photo: memoryOne,
   },
   {
     id: 2,
     caption: "sunshine in a person",
     palette: { p1: "#FFFFFF", p2: "#fffaeb", p3: "#111111" },
-    photo:
-      "https://images.unsplash.com/photo-1760124146290-a896872ae49a?crop=entropy&cs=srgb&fm=jpg&w=500&q=80",
+    photo: memoryTwo,
   },
   {
     id: 3,
     caption: "golden hour, our hour",
     palette: { p1: "#77BEF8", p2: "#f5f0ff", p3: "#818cf8" },
-    photo:
-      "https://images.unsplash.com/photo-1617643049077-7e2e755c8b8c?crop=entropy&cs=srgb&fm=jpg&w=500&q=80",
+    photo: memoryThree,
   },
   {
     id: 4,
     caption: "balloons & bad singing",
     palette: { p1: "#77BEF8", p2: "#effdf6", p3: "#22d3ee" },
-    photo:
-      "https://images.unsplash.com/flagged/photo-1563692040599-7e7d379d37b5?crop=entropy&cs=srgb&fm=jpg&w=500&q=80",
+    photo: memoryFour,
   },
   {
     id: 5,
     caption: "old photos, older jokes",
     palette: { p1: "#fb7185", p2: "#fff1f2", p3: "#fdba74" },
-    photo:
-      "https://images.unsplash.com/photo-1533158307587-828f0a76ef46?crop=entropy&cs=srgb&fm=jpg&w=500&q=80",
+    photo: memoryFive,
   },
 ];
 
