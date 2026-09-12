@@ -104,9 +104,6 @@ export const NextButton = ({ onClick, label = "Next", testid }) => (
     className="group relative mt-10 overflow-hidden rounded-full bg-ink px-8 py-3.5 text-sm font-medium text-paper ring-2 ring-ink/10"
   >
     <span className="relative z-10">{label}</span>
-    <span
-      className="absolute inset-0 translate-y-full transition-transform duration-500 group-hover:translate-y-0"
-      className="absolute inset-0 translate-y-full bg-brand transition-transform duration-500 group-hover:translate-y-0"
-    />
+    <span className="absolute inset-0 translate-y-full bg-brand transition-transform duration-500 group-hover:translate-y-0" />
   </motion.button>
 );
