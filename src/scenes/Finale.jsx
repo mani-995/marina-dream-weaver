@@ -11,7 +11,7 @@ const WORDS = ["HAPPY", "BIRTHDAY", "DIPUUUI"];
 
 export default function Finale({ onRestart }) {
   useEffect(() => {
-    const colors = ["#f472b6", "#c084fc", "#facc15", "#34d399", "#fb923c"];
+    const colors = ["#FF58C7", "#77BEF8", "#FFFFFF", "#77BEF8", "#111111"];
     const t1 = setTimeout(
       () => confetti({ particleCount: 180, spread: 120, origin: { y: 0.5 }, colors }),
       600,

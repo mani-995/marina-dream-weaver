@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 export const Flower = ({
   size = 220,
   petals = 10,
-  palette = { p1: "#f472b6", p2: "#fff1f7", p3: "#c084fc" },
+  palette = { p1: "#FF58C7", p2: "#FFFFFF", p3: "#77BEF8" },
   bloom = true,
   delay = 0,
   className = "",

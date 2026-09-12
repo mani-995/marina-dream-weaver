@@ -7,28 +7,28 @@ const GARDEN = [
   {
     id: 1,
     caption: "that laugh, again",
-    palette: { p1: "#f472b6", p2: "#fff1f7", p3: "#c084fc" },
+    palette: { p1: "#FF58C7", p2: "#FFFFFF", p3: "#77BEF8" },
     photo:
       "https://images.unsplash.com/photo-1578933301026-3e5e901126dc?crop=entropy&cs=srgb&fm=jpg&w=500&q=80",
   },
   {
     id: 2,
     caption: "sunshine in a person",
-    palette: { p1: "#facc15", p2: "#fffaeb", p3: "#fb923c" },
+    palette: { p1: "#FFFFFF", p2: "#fffaeb", p3: "#111111" },
     photo:
       "https://images.unsplash.com/photo-1760124146290-a896872ae49a?crop=entropy&cs=srgb&fm=jpg&w=500&q=80",
   },
   {
     id: 3,
     caption: "golden hour, our hour",
-    palette: { p1: "#c084fc", p2: "#f5f0ff", p3: "#818cf8" },
+    palette: { p1: "#77BEF8", p2: "#f5f0ff", p3: "#818cf8" },
     photo:
       "https://images.unsplash.com/photo-1617643049077-7e2e755c8b8c?crop=entropy&cs=srgb&fm=jpg&w=500&q=80",
   },
   {
     id: 4,
     caption: "balloons & bad singing",
-    palette: { p1: "#34d399", p2: "#effdf6", p3: "#22d3ee" },
+    palette: { p1: "#77BEF8", p2: "#effdf6", p3: "#22d3ee" },
     photo:
       "https://images.unsplash.com/flagged/photo-1563692040599-7e7d379d37b5?crop=entropy&cs=srgb&fm=jpg&w=500&q=80",
   },

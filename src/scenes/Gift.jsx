@@ -29,7 +29,7 @@ export default function Gift({ onNext }) {
       particleCount: 150,
       spread: 100,
       origin: { y: 0.6 },
-      colors: ["#f472b6", "#c084fc", "#facc15", "#34d399"],
+      colors: ["#FF58C7", "#77BEF8", "#FFFFFF", "#77BEF8"],
       shapes: ["circle"],
     });
   };
@@ -69,7 +69,7 @@ export default function Gift({ onNext }) {
                 whileHover={{ scale: 1.08 }}
                 className="absolute grid h-32 w-32 place-items-center rounded-2xl text-white shadow-[0_26px_60px_-24px_rgba(244,114,182,0.9)]"
                 style={{
-                  background: "linear-gradient(150deg,#f472b6,#c084fc)",
+                  background: "linear-gradient(150deg,#FF58C7,#77BEF8)",
                 }}
               >
                 <span

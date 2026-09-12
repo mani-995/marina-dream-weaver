@@ -76,7 +76,7 @@ export default function LetterScene({ onNext }) {
                 <div
                   className="absolute inset-0 rounded-[2px] border"
                   style={{
-                    background: "linear-gradient(180deg,#fbe3ef,#f3cfe3)",
+                    background: "linear-gradient(180deg,#FFFFFF,#D6EBFC)",
                     borderColor: "var(--glass-bd)",
                     zIndex: 2,
                     clipPath: "polygon(0 22%, 100% 22%, 100% 100%, 0 100%)",
@@ -88,7 +88,7 @@ export default function LetterScene({ onNext }) {
                   transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
                   className="absolute inset-x-0 top-0 h-[52%] origin-top"
                   style={{
-                    background: "linear-gradient(180deg,#f9d3e6,#f0b8d4)",
+                    background: "linear-gradient(180deg,#FFFFFF,#77BEF8)",
                     clipPath: "polygon(0 0, 100% 0, 50% 100%)",
                     zIndex: 3,
                     transformStyle: "preserve-3d",

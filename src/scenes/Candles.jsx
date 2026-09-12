@@ -5,7 +5,7 @@ import { Wind, Flame } from "lucide-react";
 import { SceneFrame, Eyebrow, NextButton } from "../components/Chrome";
 
 const CANDLES = Array.from({ length: 11 });
-const COLORS = ["#f472b6", "#c084fc", "#facc15", "#34d399", "#fb923c"];
+const COLORS = ["#FF58C7", "#77BEF8", "#FFFFFF", "#77BEF8", "#111111"];
 
 export default function Candles({ onNext }) {
   const [lit, setLit] = useState(true);
@@ -61,7 +61,7 @@ export default function Candles({ onNext }) {
                         transition={{ delay: i * 0.04 }}
                         className="candle-flame mb-1 h-4 w-[7px] rounded-full"
                         style={{
-                          background: "linear-gradient(180deg,#fff8cc,#facc15 55%,#fb923c)",
+                          background: "linear-gradient(180deg,#fff8cc,#FFFFFF 55%,#111111)",
                           boxShadow: "0 0 16px 5px rgba(250,204,21,0.65)",
                         }}
                       />
@@ -80,7 +80,7 @@ export default function Candles({ onNext }) {
 
             <div
               className="relative h-16 rounded-t-xl"
-              style={{ background: "linear-gradient(180deg,#fff0f7,#f9c6dd)" }}
+              style={{ background: "linear-gradient(180deg,#FFFFFF,#FFB7E5)" }}
             >
               <div
                 className="absolute inset-x-0 top-0 h-6"
@@ -93,7 +93,7 @@ export default function Candles({ onNext }) {
             </div>
             <div
               className="h-20 rounded-b-xl"
-              style={{ background: "linear-gradient(180deg,#efe0ff,#cfa9f2)" }}
+              style={{ background: "linear-gradient(180deg,#D6EBFC,#77BEF8)" }}
             />
             <div
               className="mx-auto mt-1 h-2.5 w-[118%] -translate-x-[9%] rounded-full"

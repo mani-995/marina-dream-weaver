@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-const COLORS = ["#f472b6", "#c084fc", "#fbcfe8", "#fde68a", "#a7f3d0"];
+const COLORS = ["#FF58C7", "#77BEF8", "#FFFFFF", "#77BEF8", "#FFFFFF"];
 
 export const PetalField = ({ count = 26 }) => {
   const petals = useMemo(
