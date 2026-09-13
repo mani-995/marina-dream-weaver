@@ -87,7 +87,7 @@ export default function Welcome({ onNext }) {
             <div className="flex items-center justify-between text-[10px] uppercase tracking-[.2em] text-ink/45"><span>now playing</span><span className="rounded-full bg-brand/15 px-2.5 py-1 text-brand">scene 01</span></div>
             <p className="font-display mt-6 text-3xl leading-tight text-ink">“Some people are seasons.<br />You're the <em className="text-brand">whole spring.</em>”</p>
             <div className="mt-3 flex min-h-[270px] items-center justify-center">
-              <button onClick={() => { setBloom(false); setTimeout(() => setBloom(true), 140); }} data-testid="welcome-bloom-button" aria-label="Bloom again">
+              <button onClick={() => { setBloom(false); window.setTimeout(() => setBloom(true), 700); }} data-testid="welcome-bloom-button" aria-label="Bloom again">
                 <Flower size={280} petals={12} rings={3} bloom={bloom} tilt={44} />
               </button>
             </div>
