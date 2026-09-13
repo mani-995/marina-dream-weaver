@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 const COLORS = ["#FF58C7", "#77BEF8", "#FFFFFF", "#77BEF8", "#FFFFFF"];
 const seeded = (index, salt) => {
@@ -7,6 +7,7 @@ const seeded = (index, salt) => {
 };
 
 export const PetalField = ({ count = 26 }) => {
+  const [mounted, setMounted] = useState(false);
   const petals = useMemo(
     () =>
       Array.from({ length: count }).map((_, i) => ({
@@ -20,6 +21,10 @@ export const PetalField = ({ count = 26 }) => {
       })),
     [count],
   );
+
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) return null;
 
   return (
     <div
