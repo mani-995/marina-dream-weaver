@@ -1,6 +1,6 @@
 declare module "@/App" {
-  import type { ComponentType } from "react";
+  import type { FunctionComponent } from "react";
 
-  const App: ComponentType;
+  const App: FunctionComponent;
   export default App;
 }

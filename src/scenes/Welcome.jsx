@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Flower } from "../components/Flower";
 import { SceneFrame, NextButton } from "../components/Chrome";
-import { timeLeft, ordinal, turningAge } from "../lib/birthday";
+import { timeLeft } from "../lib/birthday";
 
 const Unit = ({ value, label, testid }) => (
   <div className="flex flex-col items-center px-3 sm:px-5" data-testid={testid}>
     <span className="font-display text-3xl leading-none sm:text-4xl">
-      {String(value).padStart(2, "0")}
+      {value === null ? "—" : String(value).padStart(2, "0")}
     </span>
     <span className="eyebrow mt-2 text-[9px]" style={{ color: "var(--ink-soft)" }}>
       {label}
@@ -16,10 +16,11 @@ const Unit = ({ value, label, testid }) => (
 );
 
 export default function Welcome({ onNext }) {
-  const [t, setT] = useState(timeLeft());
+  const [t, setT] = useState({ days: null, hours: null, minutes: null, seconds: null });
   const [bloom, setBloom] = useState(false);
 
   useEffect(() => {
+    setT(timeLeft());
     const i = setInterval(() => setT(timeLeft()), 1000);
     const b = setTimeout(() => setBloom(true), 900);
     return () => {
@@ -45,7 +46,7 @@ export default function Welcome({ onNext }) {
 
           <h1 className="font-display relative text-[clamp(4.5rem,11vw,10rem)] leading-[0.82]">
             <motion.span initial={{ y: 60, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: .35, duration: 1 }} className="block text-ink">Dipuuui</motion.span>
-            <motion.span initial={{ y: 60, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: .52, duration: 1 }} className="block text-transparent" style={{ WebkitTextStroke: "2px var(--ink)" }}>turns {turningAge()}</motion.span>
+            <motion.span initial={{ y: 60, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: .52, duration: 1 }} className="block text-transparent" style={{ WebkitTextStroke: "2px var(--ink)" }}>turns 22</motion.span>
           </h1>
 
           <motion.p
