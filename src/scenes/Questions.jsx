@@ -4,9 +4,9 @@ import { SceneFrame, Eyebrow, NextButton } from "../components/Chrome";
 
 const QUESTIONS = [
   {
-    q: "Be honest. Are you the favourite child?",
-    yes: "I knew it. Mum has been lying to me for 22 years.",
-    no: "Liar. You get the last piece of everything.",
+    q: "Be honest. Are you the favourite cousin?",
+    yes: "I knew it. Aunty has been lying to me for 22 years.",
+    no: "Liar. You get the last piece of everything at every family dinner.",
   },
   {
     q: "Do you still blame me for things you 100% did?",
