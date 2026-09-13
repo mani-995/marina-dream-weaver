@@ -57,7 +57,7 @@ export const Flower = ({
             ))}
           </div>
         ))}
-        <span className="core" />
+        {photo && <span className="core" />}
         {photo && (
           <span className="core-photo">
             <img src={photo} alt="" loading="lazy" />
