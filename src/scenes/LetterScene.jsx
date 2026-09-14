@@ -82,7 +82,9 @@ export default function LetterScene({ onNext }) {
                     boxShadow: "inset 0 2px 12px rgba(17,17,17,0.08), 0 10px 30px -12px rgba(17,17,17,0.25)",
                   }}
                 >
-                  <span
+                  <motion.span
+                    animate={opening ? { opacity: 1, filter: "blur(0px)" } : { opacity: 0.35, filter: "blur(7px)" }}
+                    transition={{ duration: 0.8, delay: opening ? 0.7 : 0 }}
                     className="font-hand block text-left text-2xl leading-relaxed"
                     style={{ color: "var(--ink-soft)" }}
                   >
@@ -90,7 +92,7 @@ export default function LetterScene({ onNext }) {
                     <br />
                     <br />
                     something has been waiting in here for you…
-                  </span>
+                  </motion.span>
                 </motion.div>
 
                 {/* Top flap */}
@@ -101,13 +103,11 @@ export default function LetterScene({ onNext }) {
                   style={{ transformStyle: "preserve-3d" }}
                 >
                   <div
-                    className="h-1/2 w-full border-b"
+                    className="h-1/2 w-full"
                     style={{
-                      background: "rgba(255,255,255,0.82)",
-                      backdropFilter: "blur(4px)",
-                      borderColor: "rgba(255,255,255,0.4)",
+                      background: "linear-gradient(180deg, rgba(255,255,255,0.96), rgba(214,235,252,0.9))",
                       clipPath: "polygon(0 0, 100% 0, 50% 100%)",
-                      boxShadow: "inset 0 -20px 20px -20px rgba(0,0,0,0.05)",
+                      filter: "drop-shadow(0 8px 14px rgba(119,190,248,0.28))",
                       backfaceVisibility: "hidden",
                     }}
                   >
@@ -123,18 +123,18 @@ export default function LetterScene({ onNext }) {
                   <div
                     className="absolute inset-0 rounded-lg border"
                     style={{
-                      background: "rgba(255,255,255,0.2)",
-                      backdropFilter: "blur(2px)",
-                      borderColor: "rgba(255,255,255,0.4)",
+                      background: "rgba(255,255,255,0.35)",
+                      backdropFilter: "blur(5px)",
+                      borderColor: "rgba(255,255,255,0.5)",
                     }}
                   />
                   <div
                     className="absolute bottom-0 h-3/4 w-full"
                     style={{
-                      background: "rgba(255,255,255,0.42)",
-                      backdropFilter: "blur(8px)",
+                      background: "linear-gradient(0deg, rgba(255,255,255,0.82), rgba(255,255,255,0.6))",
+                      backdropFilter: "blur(12px)",
                       clipPath: "polygon(0 100%, 100% 100%, 100% 20%, 50% 60%, 0 20%)",
-                      boxShadow: "0 -4px 20px rgba(0,0,0,0.03)",
+                      boxShadow: "0 -4px 24px rgba(119,190,248,0.18)",
                     }}
                   />
                 </div>
