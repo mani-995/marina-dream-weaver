@@ -6,6 +6,7 @@ export const STEPS = [
   { id: "questions", label: "Questions" },
   { id: "blooms", label: "Blooms" },
   { id: "candles", label: "Candles" },
+  { id: "scratch", label: "Scratch" },
   { id: "letter", label: "Letter" },
   { id: "gift", label: "Gift" },
   { id: "finale", label: "Wish" },
