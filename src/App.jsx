@@ -6,6 +6,7 @@ import Welcome from "@/scenes/Welcome";
 import Questions from "@/scenes/Questions";
 import Blooms from "@/scenes/Blooms";
 import Candles from "@/scenes/Candles";
+import Scratch from "@/scenes/Scratch";
 import LetterScene from "@/scenes/LetterScene";
 import Gift from "@/scenes/Gift";
 import Finale from "@/scenes/Finale";
@@ -55,6 +56,7 @@ export default function App() {
     <Questions key="questions" onNext={next} />,
     <Blooms key="blooms" onNext={next} />,
     <Candles key="candles" onNext={next} />,
+    <Scratch key="scratch" onNext={next} />,
     <LetterScene key="letter" onNext={next} />,
     <Gift key="gift" onNext={next} />,
     <Finale key="finale" onRestart={() => goTo(0)} />,
@@ -64,7 +66,7 @@ export default function App() {
     <div className="story-shell grain relative min-h-screen overflow-x-hidden">
       <AnimatePresence>{loading && <Curtain key="curtain" />}</AnimatePresence>
       <div className="pointer-events-none fixed inset-0 z-0">
-        {step !== 6 && <PetalField count={12} />}
+        {step !== STEPS.length - 1 && <PetalField count={12} />}
       </div>
       <Chrome
         step={step}
