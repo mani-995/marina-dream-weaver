@@ -37,7 +37,7 @@ export default function Gift({ onNext }) {
   return (
     <SceneFrame testid="scene-gift">
       <div className="w-full max-w-3xl text-center">
-        <Eyebrow>chapter 05 — catch it</Eyebrow>
+        <Eyebrow>chapter 06 — catch it</Eyebrow>
         <h2
           className="font-display text-2xl tracking-tight sm:text-3xl lg:text-4xl"
           style={{ color: "var(--ink)" }}

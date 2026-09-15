@@ -123,7 +123,7 @@ export default function Candles({ onNext }) {
         </div>
 
         {wished && (
-          <NextButton onClick={onNext} label="There's a letter for you" testid="candles-next-button" />
+          <NextButton onClick={onNext} label="Now scratch this card" testid="candles-next-button" />
         )}
       </div>
     </SceneFrame>
