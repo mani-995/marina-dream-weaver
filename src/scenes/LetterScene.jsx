@@ -31,7 +31,7 @@ export default function LetterScene({ onNext }) {
   return (
     <SceneFrame testid="scene-letter">
       <div className="w-full max-w-2xl text-center">
-        <Eyebrow>chapter 04 — the letter</Eyebrow>
+        <Eyebrow>chapter 05 — the letter</Eyebrow>
 
         <AnimatePresence mode="wait">
           {stage !== "open" ? (
