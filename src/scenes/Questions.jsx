@@ -5,6 +5,8 @@ import { SceneFrame, Eyebrow, NextButton } from "../components/Chrome";
 const QUESTIONS = [
   {
     q: "Who is the most dramatic?",
+    options: ["you", "me"],
+    reactions: { you: "yes", me: "no" },
     yes: "Correct. The Oscar committee has already been notified.",
     no: "Denial is the most dramatic move of all. Impressive.",
   },
