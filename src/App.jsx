@@ -25,7 +25,7 @@ const Curtain = () => (
       className="text-center"
     >
       <p className="font-display text-5xl italic text-brand">for Dipuuui</p>
-      <p className="mt-2 text-[10px] uppercase tracking-[0.24em] text-ink/45">a story in seven chapters</p>
+      <p className="mt-2 text-[10px] uppercase tracking-[0.24em] text-ink/45">a story in eight chapters</p>
     </motion.div>
   </motion.div>
 );
