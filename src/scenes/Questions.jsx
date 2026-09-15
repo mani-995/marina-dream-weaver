@@ -38,6 +38,8 @@ export default function Questions({ onNext }) {
   const done = i === QUESTIONS.length - 1 && answer;
   const current = QUESTIONS[i];
 
+  const options = current.options || ["yes", "no"];
+  const reactionKey = current.reactions?.[answer] || answer;
   const pick = (val) => setAnswer(val);
   const advance = () => {
     setAnswer(null);
