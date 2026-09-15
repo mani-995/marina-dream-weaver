@@ -100,7 +100,7 @@ export default function Questions({ onNext }) {
               style={{ color: "var(--lav)" }}
               data-testid="answer-reaction"
             >
-              {current[answer]}
+              {current[reactionKey]}
             </motion.p>
           )}
         </AnimatePresence>
