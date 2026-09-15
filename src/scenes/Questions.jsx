@@ -69,10 +69,10 @@ export default function Questions({ onNext }) {
         </AnimatePresence>
 
         <div className="mt-10 flex justify-center gap-4">
-          {["yes", "no"].map((v) => (
+          {options.map((v) => (
             <motion.button
               key={v}
-              whileHover={{ y: -4, rotate: v === "yes" ? -2 : 2 }}
+              whileHover={{ y: -4, rotate: v === options[0] ? -2 : 2 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => pick(v)}
               data-testid={`answer-${v}-button`}
