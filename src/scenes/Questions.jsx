@@ -5,6 +5,8 @@ import { SceneFrame, Eyebrow, NextButton } from "../components/Chrome";
 const QUESTIONS = [
   {
     q: "Who is the most dramatic?",
+    options: ["you", "me"],
+    reactions: { you: "yes", me: "no" },
     yes: "Correct. The Oscar committee has already been notified.",
     no: "Denial is the most dramatic move of all. Impressive.",
   },
@@ -36,6 +38,8 @@ export default function Questions({ onNext }) {
   const done = i === QUESTIONS.length - 1 && answer;
   const current = QUESTIONS[i];
 
+  const options = current.options || ["yes", "no"];
+  const reactionKey = current.reactions?.[answer] || answer;
   const pick = (val) => setAnswer(val);
   const advance = () => {
     setAnswer(null);
@@ -65,10 +69,10 @@ export default function Questions({ onNext }) {
         </AnimatePresence>
 
         <div className="mt-10 flex justify-center gap-4">
-          {["yes", "no"].map((v) => (
+          {options.map((v) => (
             <motion.button
               key={v}
-              whileHover={{ y: -4, rotate: v === "yes" ? -2 : 2 }}
+              whileHover={{ y: -4, rotate: v === options[0] ? -2 : 2 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => pick(v)}
               data-testid={`answer-${v}-button`}
@@ -96,7 +100,7 @@ export default function Questions({ onNext }) {
               style={{ color: "var(--lav)" }}
               data-testid="answer-reaction"
             >
-              {current[answer]}
+              {current[reactionKey]}
             </motion.p>
           )}
         </AnimatePresence>
