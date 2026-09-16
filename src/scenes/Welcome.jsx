@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Flower } from "../components/Flower";
 import { SceneFrame, NextButton } from "../components/Chrome";
+import { Tilt } from "../components/Tilt";
 import { timeLeft } from "../lib/birthday";
 
 const Unit = ({ value, label, testid }) => (
@@ -65,6 +66,15 @@ export default function Welcome({ onNext }) {
             label="Begin the story"
             testid="welcome-begin-button"
           />
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 2, duration: 1 }}
+            className="mt-3 text-[10px] uppercase tracking-[0.2em]"
+            style={{ color: "var(--ink-soft)" }}
+          >
+            best with sound on — top right
+          </motion.p>
 
           <motion.div
             initial={{ opacity: 0 }}
@@ -83,6 +93,7 @@ export default function Welcome({ onNext }) {
 
         <div className="relative lg:col-span-5">
           <div className="absolute -right-4 -top-6 h-full w-full rounded-[28px] bg-sky/30 ring-1 ring-ink/10" />
+          <Tilt max={7}>
           <div className="glass relative rounded-[22px] p-6 sm:p-8">
             <div className="flex items-center justify-between text-[10px] uppercase tracking-[.2em] text-ink/45"><span>now playing</span><span className="rounded-full bg-brand/15 px-2.5 py-1 text-brand">scene 01</span></div>
             <p className="font-display mt-6 text-3xl leading-tight text-ink">“Some people are seasons.<br />You're the <em className="text-brand">whole spring.</em>”</p>
