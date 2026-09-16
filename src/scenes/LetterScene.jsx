@@ -263,6 +263,7 @@ export default function LetterScene({ onNext }) {
                 <NextButton onClick={onNext} label="Wait — there's a gift" testid="letter-next-button" />
               </div>
             </motion.div>
+            </Tilt>
           )}
         </AnimatePresence>
       </div>
