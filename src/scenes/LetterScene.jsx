@@ -199,8 +199,6 @@ export default function LetterScene({ onNext }) {
               className="paper-card relative mx-auto max-w-3xl rounded-[3px] border px-7 py-12 text-left sm:px-14 sm:py-16"
               style={{ borderColor: "var(--glass-bd)" }}
             >
-              <Tilt max={4} className="contents">
-                <span className="contents">
               <span className="washi" style={{ top: -10, left: 40, transform: "rotate(-4deg)" }} />
               <span className="washi" style={{ top: -10, right: 40, transform: "rotate(5deg)" }} />
 
