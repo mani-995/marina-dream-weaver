@@ -191,6 +191,7 @@ export default function LetterScene({ onNext }) {
               </p>
             </motion.div>
           ) : (
+            <Tilt max={4} className="mx-auto max-w-3xl">
             <motion.div
               key="paper"
               initial={{ opacity: 0, rotateX: -14, y: 60, scale: 0.94 }}
