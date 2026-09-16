@@ -104,6 +104,7 @@ export default function Welcome({ onNext }) {
             </div>
             <div className="flex items-center justify-between border-t border-ink/10 pt-4 text-[10px] uppercase tracking-[.18em] text-ink/45"><span>tap to bloom</span><span>handmade · keep forever</span></div>
           </div>
+          </Tilt>
         </div>
       </div>
     </SceneFrame>
