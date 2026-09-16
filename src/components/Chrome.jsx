@@ -14,57 +14,61 @@ export const STEPS = [
 
 export const Chrome = ({ step, goTo, dark, setDark, muted, setMuted }) => (
   <div className="pointer-events-none fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-8">
-    <div className="glass pointer-events-auto mx-auto flex max-w-6xl items-center gap-3 rounded-full px-3 py-2 sm:px-4">
-      <div className="flex shrink-0 items-center gap-2">
-        <span className="grid size-8 place-items-center rounded-full bg-brand font-display text-lg italic text-paper">D</span>
-        <span className="font-display text-xl leading-none text-ink">Dipuuui</span>
-        <span className="hidden text-[9px] uppercase tracking-[0.18em] text-ink/45 sm:block">turning 22</span>
+    <div className="glass pointer-events-auto mx-auto flex h-14 max-w-4xl items-center rounded-[22px] px-2 sm:h-16 sm:px-3">
+      <div className="flex min-w-12 shrink-0 items-center gap-2 px-2 sm:min-w-32">
+        <span className="font-display text-xl italic leading-none text-brand sm:text-2xl">
+          {String(step + 1).padStart(2, "0")}
+        </span>
+        <span className="hidden text-[9px] font-medium uppercase tracking-[0.18em] text-ink/45 sm:block">
+          {STEPS[step].label}
+        </span>
       </div>
 
-      <div className="mx-auto flex items-center gap-2" data-testid="step-progress">
+      <div className="mx-auto flex flex-1 items-center justify-center gap-0.5 px-1 sm:gap-1.5 sm:px-5" data-testid="step-progress">
         {STEPS.map((s, i) => (
           <button
             key={s.id}
             onClick={() => goTo(i)}
             disabled={i > step}
-            title={s.label}
+            title={`${String(i + 1).padStart(2, "0")} — ${s.label}`}
+            aria-label={`Go to ${s.label}`}
+            aria-current={i === step ? "step" : undefined}
             data-testid={`step-dot-${s.id}`}
-            className="group relative grid h-6 min-w-6 place-items-center disabled:cursor-not-allowed"
+            className="group relative grid h-9 flex-1 place-items-center disabled:cursor-not-allowed"
           >
             <span
-              className="block rounded-full transition-all duration-500"
-              style={{
-                width: i === step ? 28 : 7,
-                height: 7,
-                background:
-                  i === step
-                    ? "var(--rose)"
-                    : i < step
-                      ? "var(--sky)"
-                      : "var(--glass-bd)",
-                opacity: i > step ? 0.6 : 1,
-              }}
+              className={`block h-1.5 w-full max-w-8 rounded-full transition-all duration-500 sm:max-w-10 ${
+                i === step
+                  ? "bg-brand shadow-[0_0_14px_color-mix(in_oklab,var(--rose)_48%,transparent)]"
+                  : i < step
+                    ? "bg-sky"
+                    : "bg-ink/10"
+              }`}
             />
           </button>
         ))}
       </div>
 
-      <button
-        onClick={() => setMuted(!muted)}
-        data-testid="chrome-audio-toggle"
-        aria-label="Toggle ambient sound"
-        className="grid size-8 shrink-0 place-items-center rounded-full bg-paper/70 text-ink ring-1 ring-ink/10"
-      >
-        {muted ? <VolumeX size={14} /> : <Volume2 size={14} />}
-      </button>
-      <button
-        onClick={() => setDark(!dark)}
-        data-testid="chrome-theme-toggle"
-        aria-label="Toggle theme"
-        className="grid size-8 shrink-0 place-items-center rounded-full bg-paper/70 text-ink ring-1 ring-ink/10"
-      >
-        {dark ? <Sun size={14} /> : <Moon size={14} />}
-      </button>
+      <div className="ml-1 flex shrink-0 items-center gap-1 border-l border-ink/10 pl-2">
+        <button
+          onClick={() => setMuted(!muted)}
+          data-testid="chrome-audio-toggle"
+          aria-label={muted ? "Turn sound on" : "Turn sound off"}
+          title={muted ? "Turn sound on" : "Turn sound off"}
+          className="grid size-9 shrink-0 place-items-center rounded-full text-ink transition-colors hover:bg-brand/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+        >
+          {muted ? <VolumeX size={15} strokeWidth={1.8} /> : <Volume2 size={15} strokeWidth={1.8} />}
+        </button>
+        <button
+          onClick={() => setDark(!dark)}
+          data-testid="chrome-theme-toggle"
+          aria-label={dark ? "Use light theme" : "Use dark theme"}
+          title={dark ? "Use light theme" : "Use dark theme"}
+          className="grid size-9 shrink-0 place-items-center rounded-full text-ink transition-colors hover:bg-sky/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky"
+        >
+          {dark ? <Sun size={15} strokeWidth={1.8} /> : <Moon size={15} strokeWidth={1.8} />}
+        </button>
+      </div>
     </div>
   </div>
 );
