@@ -10,6 +10,7 @@ import Scratch from "@/scenes/Scratch";
 import LetterScene from "@/scenes/LetterScene";
 import Gift from "@/scenes/Gift";
 import Finale from "@/scenes/Finale";
+import { startMusic, stopMusic } from "@/lib/ambient";
 
 const Curtain = () => (
   <motion.div
@@ -44,6 +45,14 @@ export default function App() {
     const timeout = window.setTimeout(() => setLoading(false), 1600);
     return () => window.clearTimeout(timeout);
   }, []);
+
+  useEffect(() => {
+    if (muted) {
+      stopMusic();
+    } else {
+      startMusic();
+    }
+  }, [muted]);
 
   const goTo = (nextStep) => {
     setStep(Math.max(0, Math.min(nextStep, STEPS.length - 1)));

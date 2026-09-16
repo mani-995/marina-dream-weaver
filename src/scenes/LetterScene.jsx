@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Pencil, Check, RotateCcw } from "lucide-react";
 import { SceneFrame, Eyebrow, NextButton } from "../components/Chrome";
+import { Tilt } from "../components/Tilt";
 
 const KEY = "dipuuui-letter";
 const PLACEHOLDER = `My dearest Dipuuui,
@@ -190,6 +191,7 @@ export default function LetterScene({ onNext }) {
               </p>
             </motion.div>
           ) : (
+            <Tilt max={4} className="mx-auto max-w-3xl">
             <motion.div
               key="paper"
               initial={{ opacity: 0, rotateX: -14, y: 60, scale: 0.94 }}
@@ -261,6 +263,7 @@ export default function LetterScene({ onNext }) {
                 <NextButton onClick={onNext} label="Wait — there's a gift" testid="letter-next-button" />
               </div>
             </motion.div>
+            </Tilt>
           )}
         </AnimatePresence>
       </div>
