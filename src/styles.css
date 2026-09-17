@@ -139,6 +139,6 @@
 .underline-draw { background-image:linear-gradient(var(--rose),var(--rose)); background-repeat:no-repeat; background-size:0 2px; background-position:0 100%; transition:background-size .5s ease; }
 .underline-draw:hover { background-size:100% 2px; }
 .torn-paper { clip-path:polygon(0 12%,22% 0,44% 9%,66% 2%,88% 10%,100% 24%,96% 52%,100% 82%,78% 100%,52% 94%,30% 100%,8% 92%,0 70%); }
-.heart-tree { display:block; width:100%; height:auto; aspect-ratio:5/4; cursor:pointer; filter:drop-shadow(0 24px 28px color-mix(in oklab,var(--rose) 16%,transparent)); }
+.heart-tree { display:block; width:100%; height:auto; aspect-ratio:4/3; cursor:pointer; filter:drop-shadow(0 24px 28px color-mix(in oklab,var(--rose) 22%,transparent)); }
 @media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; } }
 @layer base { [data-debug-wrapper='true'] { display:contents!important; } }
