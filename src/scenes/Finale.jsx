@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import confetti from "canvas-confetti";
 import { motion } from "framer-motion";
 import { RotateCcw } from "lucide-react";
-import { Flower } from "../components/Flower";
+import { HeartTree } from "../components/HeartTree";
 import { PetalField } from "../components/PetalField";
 import { Marquee } from "../components/Marquee";
 import { SceneFrame } from "../components/Chrome";
@@ -49,13 +49,23 @@ export default function Finale({ onRestart }) {
           transition={{ delay: 1.1, duration: 1 }}
           className="mt-12 flex flex-col items-center gap-10"
         >
-          <Flower size={240} petals={14} rings={3} tilt={38} delay={900} />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.92 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.75, duration: 1 }}
+            className="w-full max-w-2xl"
+          >
+            <HeartTree />
+            <p className="-mt-5 text-[9px] uppercase tracking-[0.2em] text-ink/45">
+              tap the tree to bloom again
+            </p>
+          </motion.div>
           <p
             className="font-hand max-w-xl text-2xl sm:text-3xl"
             style={{ color: "var(--ink-soft)" }}
           >
             Some people are seasons. You're the whole spring. Thank you for
-            being my sister — go be twenty-two, loudly.
+            being my cousin — go be twenty-two, loudly.
           </p>
           <button
             onClick={onRestart}
