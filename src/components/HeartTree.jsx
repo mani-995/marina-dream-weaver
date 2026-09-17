@@ -26,9 +26,20 @@ const drawHeart = (ctx, x, y, size, rotation, color, alpha) => {
   }
   ctx.closePath();
   ctx.globalAlpha = alpha;
-  ctx.fillStyle = color;
+  const fill = ctx.createLinearGradient(-13, -14, 13, 15);
+  fill.addColorStop(0, "#FFFFFF");
+  fill.addColorStop(0.16, color);
+  fill.addColorStop(1, color);
+  ctx.fillStyle = fill;
   ctx.shadowColor = color;
-  ctx.shadowBlur = size * 0.3;
+  ctx.shadowBlur = size * 0.34;
+  ctx.shadowOffsetY = Math.max(1, size * 0.08);
+  ctx.fill();
+
+  ctx.globalAlpha = alpha * 0.72;
+  ctx.fillStyle = "#FFFFFF";
+  ctx.beginPath();
+  ctx.ellipse(-6.7, -7.2, 3.9, 2.35, -0.5, 0, Math.PI * 2);
   ctx.fill();
   ctx.restore();
 };
@@ -49,29 +60,30 @@ export function HeartTree() {
     let width = 0;
     let height = 0;
 
-    const blossoms = Array.from({ length: 128 }, (_, index) => {
+    const blossoms = Array.from({ length: 270 }, (_, index) => {
       const angle = random() * Math.PI * 2;
-      const radius = Math.sqrt(random()) * 0.92;
+      const radius = Math.sqrt(random()) * 0.98;
       const edge = heartPoint(angle);
       return {
         nx: (edge.x / 16) * radius,
         ny: (edge.y / 17) * radius,
-        size: 8 + random() * 10,
-        rotation: random() * Math.PI * 2,
-        delay: 1.25 + index * 0.009 + random() * 0.55,
-        colorIndex: index % 4,
+        size: 9 + random() * 14,
+        rotation: (random() - 0.5) * 0.62,
+        delay: 1.05 + index * 0.0045 + random() * 0.55,
+        colorIndex: Math.floor(random() * 5),
         phase: random() * Math.PI * 2,
+        depth: random(),
       };
-    });
+    }).sort((a, b) => a.depth - b.depth);
 
-    const falling = Array.from({ length: 12 }, (_, index) => ({
+    const falling = Array.from({ length: 22 }, (_, index) => ({
       x: random(),
-      speed: 0.025 + random() * 0.025,
-      offset: index / 12,
-      sway: 8 + random() * 16,
-      size: 7 + random() * 7,
+      speed: 0.018 + random() * 0.028,
+      offset: index / 22,
+      sway: 10 + random() * 22,
+      size: 7 + random() * 10,
       phase: random() * Math.PI * 2,
-      colorIndex: index % 3,
+      colorIndex: index % 5,
     }));
 
     const branches = [
@@ -109,16 +121,30 @@ export function HeartTree() {
       const sky = styles.getPropertyValue("--sky").trim();
       const paper = styles.getPropertyValue("--paper").trim();
       const ink = styles.getPropertyValue("--ink").trim();
-      const colors = [rose, sky, paper, rose];
+      const colors = [rose, rose, rose, sky, paper];
       const cx = width / 2;
-      const ground = height * 0.94;
-      const canopyW = Math.min(width * 0.78, height * 0.82);
-      const canopyH = canopyW * 0.78;
-      const canopyY = ground - canopyH * 0.66;
+      const ground = height * 0.96;
+      const canopyW = Math.min(width * 0.92, height * 1.02);
+      const canopyH = canopyW * 0.82;
+      const canopyY = ground - canopyH * 0.72;
       ctx.clearRect(0, 0, width, height);
 
       const grow = Math.min(1, Math.max(0, (elapsed - 0.15) / 1.5));
       ctx.lineCap = "round";
+      const trunkTop = ground - canopyH * 0.63 * grow;
+      const trunkGradient = ctx.createLinearGradient(cx - 7, ground, cx + 7, trunkTop);
+      trunkGradient.addColorStop(0, ink);
+      trunkGradient.addColorStop(0.48, rose);
+      trunkGradient.addColorStop(1, sky);
+      ctx.beginPath();
+      ctx.moveTo(cx - 7, ground);
+      ctx.bezierCurveTo(cx - 5, ground - canopyH * 0.25 * grow, cx - 3, trunkTop + 24, cx, trunkTop);
+      ctx.bezierCurveTo(cx + 3, trunkTop + 24, cx + 7, ground - canopyH * 0.25 * grow, cx + 7, ground);
+      ctx.closePath();
+      ctx.fillStyle = trunkGradient;
+      ctx.globalAlpha = 0.78;
+      ctx.fill();
+
       branches.forEach(([x1, y1, x2, y2, lineWidth], index) => {
         const local = Math.min(1, Math.max(0, grow * 1.45 - index * 0.035));
         const startX = cx + x1 * canopyW;
@@ -134,26 +160,35 @@ export function HeartTree() {
           endY,
         );
         ctx.strokeStyle = ink;
-        ctx.globalAlpha = 0.72;
-        ctx.lineWidth = Math.max(1.5, lineWidth * (0.65 + local * 0.35));
+        ctx.globalAlpha = 0.34;
+        ctx.lineWidth = Math.max(1.25, lineWidth * (0.55 + local * 0.3));
         ctx.stroke();
       });
 
       blossoms.forEach((blossom) => {
         const bloom = Math.min(1, Math.max(0, (elapsed - blossom.delay) / 0.7));
         if (bloom <= 0) return;
-        const pulse = 1 + Math.sin(elapsed * 1.15 + blossom.phase) * 0.025;
+        const pulse = 1 + Math.sin(elapsed * 1.05 + blossom.phase) * 0.018;
         const x = cx + blossom.nx * canopyW * 0.49;
         const y = canopyY + blossom.ny * canopyH * 0.46;
         const eased = 1 - (1 - bloom) ** 3;
-        drawHeart(ctx, x, y, blossom.size * eased * pulse, blossom.rotation, colors[blossom.colorIndex], eased * 0.9);
+        const overshoot = 1 + Math.sin(Math.min(1, bloom) * Math.PI) * 0.18;
+        drawHeart(
+          ctx,
+          x,
+          y,
+          blossom.size * eased * overshoot * pulse,
+          blossom.rotation,
+          colors[blossom.colorIndex],
+          eased * (0.78 + blossom.depth * 0.2),
+        );
       });
 
       if (elapsed > 3 || reduceMotion) {
         falling.forEach((petal) => {
           const travel = (elapsed * petal.speed + petal.offset) % 1;
           const x = cx + (petal.x - 0.5) * canopyW + Math.sin(elapsed + petal.phase) * petal.sway;
-          const y = canopyY + canopyH * 0.2 + travel * canopyH * 1.2;
+           const y = canopyY + canopyH * 0.18 + travel * canopyH * 1.34;
           drawHeart(ctx, x, y, petal.size, elapsed + petal.phase, colors[petal.colorIndex], 0.5 * (1 - travel));
         });
       }
